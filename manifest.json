@@ -1,0 +1,36 @@
+{
+  "manifest_version": 2,
+  "name": "test load gift",
+  "version": "0.1",
+
+  "description": "Random load image",
+  "icons": {
+    "48": "images/icon48.jpg"
+  },
+  "browser_action": {
+    "default_icon": "images/icon48.jpg",
+    "default_popup": "popup.html"
+  },
+  "permissions": [
+    "http://api.giphy.com/",
+    "tabs",
+    "<all_urls>",
+    "http://*/",
+    "https://*/",
+    "activeTab",
+    "webNavigation",
+    "storage"
+  ],
+  "homepage_url": "https://ntcde.com/",
+  "content_security_policy":"script-src 'self' https://apis.google.com; object-src 'self'",
+  "content_scripts": [{
+    "matches": ["*://*/"],
+    "js": ["contentScript.js"]
+  }],
+  "background": {
+    "scripts": [
+      "contentScript.js"
+    ],
+    "persistent": true
+  }
+}
